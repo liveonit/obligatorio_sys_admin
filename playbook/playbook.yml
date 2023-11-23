@@ -1,0 +1,23 @@
+---
+- name: Install docker and kuberenetes dependencies
+  hosts: dns_server, web_servers
+  remote_user: "{{ ansible_user }}"
+  environment:
+    HOME: "/home/{{ ansible_user }}"
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Install docker
+      ansible.builtin.include_role:
+        name: ansible_role_docker
+
+- name: Web servers initialization
+  hosts: web_servers
+  become: true
+  vars:
+    host_ip: "{{ hostvars[host]['ansible_host'] }}"
+  roles:
+    - setup_webserver
+
+# TODO: Add dns instalation and configuration
+# TODO: Add HAproxy instalation and configuration

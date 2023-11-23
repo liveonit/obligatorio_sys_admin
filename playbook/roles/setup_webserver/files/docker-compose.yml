@@ -1,0 +1,18 @@
+services:
+  web:
+    image: nginx:1.25.3-alpine
+    container_name: web
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index_1.html
+    environment:
+      NGINX_PORT: 80
+    networks:
+      dns_net:
+
+networks:
+  dns_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.24.0.0/16"
+          gateway: "172.24.0.1"

@@ -1,0 +1,24 @@
+---
+- name: check or create nginx configs directory
+  file:
+    path: "~/nginx/"
+    state: "directory"
+
+- name: Write nginx home page
+  template:
+    src: "index.html"
+    dest: "~/nginx/index.html"
+    force: yes
+
+- name: copying project files
+  become: true
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: "~/nginx/"
+    mode: 0755
+
+- name: start nginx with docker-compose for use
+  become: yes
+  shell:
+    cmd: docker-compose up -d --force-recreate
+    chdir: ~/nginx
