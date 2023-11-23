@@ -26,8 +26,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.network "private_network", ip: "192.168.56.11"
                 node.vm.hostname = "haproxy"
 
-                config.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
-                config.vm.provision "shell", inline: <<-SHELL
+                node.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
+                node.vm.provision "shell", inline: <<-SHELL
                         cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
                 SHELL
     end
@@ -38,44 +38,44 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.network "private_network", ip: "192.168.56.12"
                 node.vm.hostname = "dns"
 
-                config.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
-                config.vm.provision "shell", inline: <<-SHELL
+                node.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
+                node.vm.provision "shell", inline: <<-SHELL
                         cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
                 SHELL
     end
 #=======================================================
 # Web server 1
 #=======================================================
-    config.vm.define "web_server1" do |node|
+    config.vm.define "web-server1" do |node|
       node.vm.network "private_network", ip: "192.168.56.101"
-                node.vm.hostname = "web_server1"
+                node.vm.hostname = "web-server1"
 
-                config.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
-                config.vm.provision "shell", inline: <<-SHELL
+                node.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
+                node.vm.provision "shell", inline: <<-SHELL
                         cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
                 SHELL
     end
 #=======================================================
 # Web server 2
 #=======================================================
-    config.vm.define "web_server2" do |node|
+    config.vm.define "web-server2" do |node|
       node.vm.network "private_network", ip: "192.168.56.102"
-                node.vm.hostname = "web_server2"
+                node.vm.hostname = "web-server2"
 
-                config.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
-                config.vm.provision "shell", inline: <<-SHELL
+                node.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
+                node.vm.provision "shell", inline: <<-SHELL
                         cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
                 SHELL
     end
 #=======================================================
 # Web server 3
 #=======================================================
-    config.vm.define "web_server3" do |node|
+    config.vm.define "web-server3" do |node|
       node.vm.network "private_network", ip: "192.168.56.103"
-                node.vm.hostname = "web_server3"
+                node.vm.hostname = "web-server3"
 
-                config.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
-                config.vm.provision "shell", inline: <<-SHELL
+                node.vm.provision "file", source: "./ssh-key.pub", destination: "~/.ssh/ssh-key.pub"
+                node.vm.provision "shell", inline: <<-SHELL
                         cat /home/vagrant/.ssh/ssh-key.pub >> /home/vagrant/.ssh/authorized_keys
                 SHELL
     end
@@ -84,7 +84,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #=======================================================
     config.vm.define "win_client" do |node|
       node.vm.network "private_network", ip: "192.168.56.200"
-          node.vm.hostname = "web_server2"
-          config.vm.box = "gusztavvargadr/windows-10"
+          node.vm.hostname = "web-server2"
+          node.vm.box = "gusztavvargadr/windows-10"
     end
 end
