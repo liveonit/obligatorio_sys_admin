@@ -40,3 +40,14 @@ vagrant up
 cd playbook
 ansible-playbook playbook.yaml
 ```
+
+
+Draft:
+```sh
+# Add dns in windows machine
+netsh interface ipv4 add dnsservers "Ethernet" address=192.168.56.1
+2 index=1
+
+# Test dns server
+dig +short @192.168.56.12 A web1.home.lan
+```
