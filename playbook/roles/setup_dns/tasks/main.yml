@@ -1,0 +1,24 @@
+---
+- name: check or create nginx configs directory
+  file:
+    path: "~/bind9/"
+    state: "directory"
+
+- name: copying project files
+  become: true
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: "~/bind9/"
+    mode: 0755
+
+- name: Stop and disable systemd-resolved service
+  service:
+    name:   systemd-resolved
+    enabled: no
+    state:   stopped
+
+- name: start nginx with docker-compose for use
+  become: yes
+  shell:
+    cmd: docker-compose up -d --force-recreate
+    chdir: ~/bind9

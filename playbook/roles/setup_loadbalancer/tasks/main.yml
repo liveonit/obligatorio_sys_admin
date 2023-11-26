@@ -1,0 +1,17 @@
+---
+- name: Install latest version of "haproxy"
+  ansible.builtin.apt:
+    name: haproxy
+    update_cache: yes
+    state: latest
+
+- name: Copy haproxy.conf file
+  become: true
+  copy:
+    src: "{{ role_path }}/files/haproxy.conf"
+    dest: "/etc/haproxy/haproxy.cfg"
+
+- name: Restart service haproxy, in all cases
+  ansible.builtin.service:
+    name: haproxy
+    state: restarted

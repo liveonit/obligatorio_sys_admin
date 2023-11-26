@@ -6,3 +6,11 @@ create_ssh_key:
 .PHONY: setup_vms
 setup_vms:
 	vagrant up
+
+.PHONY: destroy_vms
+destroy_vms:
+	vagrant destroy -f
+
+.PHONY: configure_vms
+configure_vms:
+	docker run --rm -v $$PWD:/usr/share/proj --name nwtools liveonit/nwtools bash
