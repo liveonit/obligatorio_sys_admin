@@ -22,3 +22,24 @@ power_on_win_client:
 connect_to_win_client:
 	vagrant ssh win_client
 
+.PHONY: suspend_web_server_1
+suspend_web_server_1:
+	vagrant suspend web-server1
+.PHONY: resume_web_server_1
+resume_web_server_1:
+	vagrant resume web-server1
+
+.PHONY: suspend_web_server_2
+suspend_web_server_2:
+	vagrant suspend web-server2
+.PHONY: resume_web_server_2
+resume_web_server_2:
+	vagrant resume web-server2
+
+.PHONY: suspend_web_server_3
+suspend_web_server_3:
+	vagrant suspend web-server3
+.PHONY: resume_web_server_3
+resume_web_server_3:
+	vagrant resume web-server3
+
