@@ -12,7 +12,7 @@ destroy_vms:
 
 .PHONY: configure_vms
 configure_vms:
-  cd playbook && ansible-playbook -i inventory.yml playbook.yml
+	cd playbook && ansible-playbook -i inventory.yml playbook.yml
 
 .PHONY: power_on_win_client
 power_on_win_client:
@@ -20,5 +20,5 @@ power_on_win_client:
 
 .PHONY: connect_to_win_client
 connect_to_win_client:
-  vagrant ssh win_client
+	vagrant ssh win_client
 
