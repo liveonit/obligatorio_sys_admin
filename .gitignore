@@ -3,4 +3,3 @@
 *.retry
 
 ssh-key*
-inventory.yml
