@@ -2,9 +2,9 @@
 
 
 ## Requirements
-
-- Vagrant y un virtualizador (vbox o kmv)
-- Ansible
+- [GNU Make](https://www.gnu.org/software/make/)
+- [Vagrant](https://www.vagrantup.com/) y un virtualizador ([vbox](https://www.virtualbox.org/wiki/Downloads) o [kmv](https://ubuntu.com/blog/kvm-hyphervisor))
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ## Instalación
 
